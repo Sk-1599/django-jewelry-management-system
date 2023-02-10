@@ -102,6 +102,7 @@ def remove_address(request, id):
 def add_to_cart(request):
     user = request.user
     product_id = request.GET.get('prod_id')
+    print(user,product_id,"********")
     product = get_object_or_404(Product, id=product_id)
 
     # Check whether the Product is alread in Cart or Not
@@ -175,23 +176,23 @@ def minus_cart(request, cart_id):
     return redirect('store:cart')
 
 
-# @login_required
-# def checkout(request):
-#     user = request.user
-#     address_id = request.GET.get('address')
-    
-#     address = get_object_or_404(Address, id=address_id)
-#     # Get all the products of User in Cart
-#     cart = Cart.objects.filter(user=user)
-#     for c in cart:
-#         # Saving all the products from Cart to Order
-#         Order(user=user, address=address, product=c.product, quantity=c.quantity).save()
-#         # And Deleting from Cart
-#         c.delete()
-#     return redirect('store:orders')
-
+@login_required
 def checkout(request):
-    return render(request,'store/checkout.html')
+    user = request.user
+    address_id = request.GET.get('address')
+    print(user,address_id,"********")   
+    address = get_object_or_404(Address, id=address_id)
+    # Get all the products of User in Cart
+    cart = Cart.objects.filter(user=user)
+    for c in cart:
+        # Saving all the products from Cart to Order
+        Order(user=user, address=address, product=c.product, quantity=c.quantity).save()
+        # And Deleting from Cart
+        c.delete()
+    return redirect('store:orders')
+
+# def checkout(request):
+#     return render(request,'store/checkout.html')
 
 
 @login_required
@@ -199,16 +200,8 @@ def orders(request):
     all_orders = Order.objects.filter(user=request.user).order_by('-ordered_date')
     return render(request, 'store/orders.html', {'orders': all_orders})
 
-
-
-
-
 def shop(request):
     return render(request, 'store/shop.html')
-
-
-
-
 
 def test(request):
     return render(request, 'store/test.html')
