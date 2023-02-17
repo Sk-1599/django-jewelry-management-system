@@ -3,9 +3,9 @@ venv
 *.pyc
 jewelryshop/static/img
 jewelryshop/static/icons
-jewelryshop/static/css
+# jewelryshop/static/css    
 db.sqlite3
-*.css
+# *.css
 *.gif
 README.md
 
