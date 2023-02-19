@@ -8,7 +8,7 @@ from django.views import View
 import decimal
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator # for Class Based Views
-import razorpay
+
 
 # Create your views here.
 
@@ -180,7 +180,6 @@ def minus_cart(request, cart_id):
 def checkout(request):
     user = request.user
     address_id = request.GET.get('address')
-    print(user,address_id,"********")   
     address = get_object_or_404(Address, id=address_id)
     # Get all the products of User in Cart
     cart = Cart.objects.filter(user=user)
@@ -190,9 +189,6 @@ def checkout(request):
         # And Deleting from Cart
         c.delete()
     return redirect('store:orders')
-
-# def checkout(request):
-#     return render(request,'store/checkout.html')
 
 
 @login_required
