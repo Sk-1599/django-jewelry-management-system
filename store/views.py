@@ -67,12 +67,8 @@ class RegistrationView(View):
 
 @login_required
 def profile(request):
-    if request.user.is_superuser == True:
-        addresses = Address.objects.all()
-        orders = Order.objects.all()
-    else:
-        addresses = Address.objects.filter(user=request.user)
-        orders = Order.objects.filter(user=request.user)
+    addresses = Address.objects.filter(user=request.user)
+    orders = Order.objects.filter(user=request.user)
     return render(request, 'account/profile.html', {'addresses':addresses, 'orders':orders})
 
 

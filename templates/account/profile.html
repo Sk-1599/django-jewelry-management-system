@@ -27,7 +27,6 @@
                         <span class="float-right"><a href="{% url 'store:remove-address' address.id %}"><i class="fas fa-trash-alt small text-muted"></i></a></span>
 
                         <p>
-                            <strong>User: </strong>{{address.user}} <br>
                             <strong>Locality: </strong>{{address.locality}} <br>
                             <strong>City: </strong>{{address.city}} <br>
                             <strong>State: </strong>{{address.state}} <br>
@@ -53,7 +52,6 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>User</th>
                       <th>Item</th>
                       <th>Status</th>
                     </tr>
@@ -63,7 +61,6 @@
                       {% for order in orders %}
                         <tr>
                           <td>{{forloop.counter}}</td>
-                          <td>{{order.user}}</td>
                           <td>{{order.product.title}}</td>
                           <td>
                             {{order.status}}
