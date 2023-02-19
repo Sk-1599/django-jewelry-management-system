@@ -22,17 +22,12 @@
             </div>
           </div>
         </section>
-        
-        {% for msg in messages %}
-          <h2 class="h6 text-uppercase mb-3" style="color:red; font-size:30px">{{msg}}</h2>
-        {% endfor %}
-        
+
         {% if cart_products %}
         <section class="py-5">
           <h2 class="h5 text-uppercase mb-4">Shopping cart</h2>
 
           {% include 'partials/_messages.html' %}
-
 
           <div class="row">
             <div class="col-lg-8 mb-4 mb-lg-0">
@@ -92,11 +87,7 @@
               <div class="bg-light px-4 py-3">
                 <div class="row align-items-center text-center">
                   <div class="col-md-6 mb-3 mb-md-0 text-md-left"><a class="btn btn-link p-0 text-dark btn-sm" href="{% url 'store:home' %}"><i class="fas fa-long-arrow-alt-left mr-2"> </i>Continue shopping</a></div>
-                    {% comment %} <div class="col-md-6 text-md-right">
-                      <a class="btn btn-outline-dark btn-sm" href="{% url 'store:checkout' %}">
-                        Procceed to checkout<i class="fas fa-long-arrow-alt-right ml-2"></i>
-                      </a>
-                    </div> {% endcomment %}
+                  <div class="col-md-6 text-md-right"><a class="btn btn-outline-dark btn-sm" href="{% url 'store:checkout' %}">Procceed to checkout<i class="fas fa-long-arrow-alt-right ml-2"></i></a></div>
                 </div>
               </div>
             </div>
@@ -140,7 +131,7 @@
                     <div class="text-end" id="paypal-button-container"></div>
 
                     {% comment %} For Cash on Delivery {% endcomment %}
-                    <button type="submit" class="btn btn-dark btn-lg btn-outline-dark" type="submit" href="{% url 'store:orders' %}"> <i class="fas fa-dollar-sign mr-2"></i>Procceed to checkout</button>
+                    <button type="submit" class="btn btn-dark btn-lg btn-outline-dark" type="submit" href="{% url 'store:orders' %}"> <i class="fas fa-dollar-sign mr-2"></i>Cash on Delivery</button>
 
                   </form>
 

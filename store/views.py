@@ -60,7 +60,7 @@ class RegistrationView(View):
     def post(self, request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            messages.success(request, "Congratulations! Registration Successful! Go to login page")
+            messages.success(request, "Congratulations! Registration Successful!")
             form.save()
         return render(request, 'account/register.html', {'form': form})
         
@@ -102,8 +102,8 @@ def remove_address(request, id):
 def add_to_cart(request):
     user = request.user
     product_id = request.GET.get('prod_id')
+    print(user,product_id,"********")
     product = get_object_or_404(Product, id=product_id)
-    print(request)
 
     # Check whether the Product is alread in Cart or Not
     item_already_in_cart = Cart.objects.filter(product=product_id, user=user)
@@ -180,11 +180,8 @@ def minus_cart(request, cart_id):
 def checkout(request):
     user = request.user
     address_id = request.GET.get('address')
-    if address_id == None:
-        messages.warning(request,"Please, select your address")
-        return redirect('store:cart')
+    print(user,address_id,"********")   
     address = get_object_or_404(Address, id=address_id)
-
     # Get all the products of User in Cart
     cart = Cart.objects.filter(user=user)
     for c in cart:

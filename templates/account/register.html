@@ -2,15 +2,12 @@
 {% load static %}
 
     {% block content %}
-    
-    <div class="container py-5">
-      <div class="col-md-8 offset-2">
-        
+
+      <div class="container py-5">
+        <div class="col-md-8 offset-2">
+
         <h1 class="mb-5">Create Your Account</h1>
         
-        {% for msg in messages %}
-          {{msg}}
-        {% endfor %}
         
         <div class="card mb-4" id="forms">
           <div class="card-header">
@@ -38,14 +35,13 @@
 
               {% if form.non_field_errors %}
                 {% for error in form.non_field_errors %}
-                    <p class="alert alert-danger alert-dismissible fade show" role="alert" my-3>
+                    <p class="alert alert-danger alert-dismissible fade show" role="alert" my-3">
                         {{error}}
                     </p>
                 {% endfor %}
               {% endif %}
 
             </form>
-
 
             <hr>
 
